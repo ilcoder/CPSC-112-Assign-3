@@ -1,8 +1,6 @@
 CPSC-112-Assign-3
 =================
 
-The third problem set.
-
 package edu.yale.cpsc112_assignment3;
 
 import java.util.Random;
@@ -56,3 +54,32 @@ int y = r.nextInt(7) + 1, z = r.nextInt(7) + 1;
        System.out.println(mySecret);
     }
   }
+  
+  public static boolean isGuessValid(String input) {
+
+	  if(input.length() != 4)
+	  {
+	  	System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+	  	return false;
+	  	
+	  } else if (input.charAt(0)==input.charAt(1) || input.charAt(0)==input.charAt(2) ||
+	  		input.charAt(0)==input.charAt(3) || input.charAt(1)==input.charAt(2) ||
+	  		input.charAt(1)==input.charAt(3) || input.charAt(2)==input.charAt(3)) 
+	  {
+	  	System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+	  	return false;
+	  } 
+	  else if (input.length() == 4) {
+	  	try 
+	  	{
+	  		int i = Integer.parseInt(input);
+	  		
+	  	} catch(NumberFormatException nfe)
+	  	{
+	  		System.out.println("Input must be a 4-digit number with digits between 1 and 7.");
+	  		return false;
+	  	}
+	  }
+	  return true;
+	  }
+
