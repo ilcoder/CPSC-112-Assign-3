@@ -4,7 +4,6 @@ CPSC-112-Assign-3
 package edu.yale.cpsc112_assignment3;
 
 import java.util.Random;
-
 public class CPSC112_Assignment3 {
 
   public static String mySecret = "";
