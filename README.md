@@ -25,7 +25,7 @@ public class CPSC112_Assignment3 {
 public static void makeMySecret() {
  
 int w = r.nextInt(7) + 1, x = r.nextInt(7) + 1; 
-int y = r.nextInt(7) + 1, z = r.nextInt(7) + 1;
+ int y = r.nextInt(7) + 1, z = r.nextInt(7) + 1;
 		 
 		 while(w==x || w==y || w==z)
 		 {
@@ -82,4 +82,253 @@ int y = r.nextInt(7) + 1, z = r.nextInt(7) + 1;
 	  }
 	  return true;
 	  }
+
+public static boolean isGameOver(String input) {
+ 
+	  int x = 0;
+	  int y = 0;
+	  	
+if(isGuessValid(input))
+	  {
+	  for (int k=0; k< 4; k++)
+	  {
+	     if(input.charAt(k)==mySecret.charAt(k))
+	     {
+	       y = y + 1;
+	      }
+	       }
+
+	  for(int j = 0; j<4; j++)
+	  {
+	      for (int i=0; i< 4; i++){
+	         if(input.charAt(i)==mySecret.charAt(j))
+	            {
+	              x = x + 1;
+	                  }
+	               }
+	  }
+	  int s = x;
+	  int t = y;
+	  int l=Integer.parseInt(input);
+	  int e=Integer.parseInt(mySecret);
+	  int p = r.nextInt(3) + 1;
+	  int o = r.nextInt(2);
+
+if(f % 2==0)
+	  { 
+	if(p==2){
+	    f = f + 1;
+	     if(o==0){
+	    	 if(x==4 && y==4){
+	       while (x < y || (x==4 && y==3) ||(x==4 && y==4)||y==t){
+	          
+	    	   y= r.nextInt(4); 
+	    	  
+	         }
+	    	 } else{
+	    		 while (x < y || (x==4 && y==3) ||(x==4 && y==4)||x==s){
+	   	          
+	  	    	   x= r.nextInt(5); 
+	  	    	   
+	  	         }
+	    	 }
+	         
+	  }else {
+	      while(x < y || (x==4 && y==4) || (x==4 && y==3) || y==t){
+	      y = r.nextInt(5);
+	      
+	   }
+	   }
+	 if (DEBUG){
+		 if(l==e && l>max){
+				max=l;
+			    System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+			  }
+			else if(l==e && l<max && c>=0){
+				 System.out.println("Your guess was lower than allowed. You have " + c + " exceptions remaining.");
+				 System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+			  }
+			else if(l==e && l<max && c<0){
+				  System.out.println("Your guess was lower than allowed. You have " + 0 + " exceptions remaining.");
+				  System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+				  }
+			else if(l>max && c>=0 && l!=e)
+		  	 {
+		  	 	max=l;
+		  	    System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		  	    }
+			  
+			else if(l>max && c<0 && l<e)
+			  	 {
+			  	 	max=l;
+			  	 System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+			  	    }
+			  
+		    else if (l < max && c>=0 && l!=e) {
+		  	 System.out.println("Your guess was lower than allowed. You have " + c + " exceptions remaining.");
+		  	 System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		  	 c = c-1;
+		  	 }
+		  	 else if (l < max && c<0 && l<e) {
+		  	 System.out.println("Your guess was lower than allowed. You have " + 0 + " exceptions remaining.");
+		  	 System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		  	 }
+
+		  	 else if (l > e && c<=0 && l>max)
+		  	 {
+		  	 	System.out.println("You're out of exceptions and you've guessed too high! The secret was " + mySecret);
+		  	 }
+
+		  	 else if (l > e && c<=0 && l<max)
+		  	 {
+		  	 	System.out.println("Your guess was lower than allowed. You have " + 0 + " exceptions remaining.");
+		  	 	System.out.println("You're out of exceptions and you've guessed too high! The secret was " + mySecret);
+		  	 }
+		  
+	  	 System.out.println("Lie.");
+	  	 return true;
+	  } else {
+		  
+		  if(l==e && l>max){
+			  max=l;
+			 System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		  }
+		  else if(l==e && l<max && c>=0){
+			 System.out.println("Your guess was lower than allowed. You have " + c + " exceptions remaining.");
+			 System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		  }
+		  else if(l==e && l<max && c<0){
+			  System.out.println("Your guess was lower than allowed. You have " + 0 + " exceptions remaining.");
+			  System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+			  }
+		   else if(l>max && c>=0 && l!=e)
+	  	 {
+	  	 	max=l;
+	  	 System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+	  	    }
+		  
+		   else if(l>max && c<0 && l<e)
+		  	 {
+		  	 	max=l;
+		  	 System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		  	    }
+		  
+	  	 else if (l < max && c>=0 && l!=e) {
+	  	 System.out.println("Your guess was lower than allowed. You have " + c + " exceptions remaining.");
+	  	 System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+	  	 c = c-1;
+	  	 }
+	  	 else if (l < max && c<0 && l<e) {
+	  	 System.out.println("Your guess was lower than allowed. You have " + 0 + " exceptions remaining.");
+	  	 System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+	  	 }
+
+	  	 else if (l > e && c<=0 && l>max)
+	  	 {
+	  	 	System.out.println("You're out of exceptions and you've guessed too high! The secret was " + mySecret);
+	  	 }
+
+	  	 else if (l > e && c<=0 && l<max)
+	  	 {
+	  	 	System.out.println("Your guess was lower than allowed. You have " + 0 + " exceptions remaining.");
+	  	 	System.out.println("You're out of exceptions and you've guessed too high! The secret was " + mySecret);
+	  	 }
+	
+	  	 return true;
+	  } 
+	    }  else 
+	   {
+	    	
+	    	if (l==e){
+		    	System.out.println("You won!");
+		    }
+		    	
+		    else if(l>max && c>=0 && l!=e)
+		  {
+		  	max=l;
+		  System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		     }
+		    
+		   else if(l>max && c<0 && l<e)
+			  {
+			  	max=l;
+			  	
+			  System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+			 
+			     }
+
+		  else if (l < max && c>=0 && l!=e) {
+		  System.out.println("Your guess was lower than allowed. You have " + c + " exceptions remaining.");
+		  System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		  
+		  c = c-1;
+		  }
+		  else if (l < max && c<=0 && l<e) {
+		  System.out.println("Your guess was lower than allowed. You have " + 0 + " exceptions remaining.");
+		  System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		  }
+
+		  else if (l > e && c<=0 && l>max)
+		  {
+		  	System.out.println("You're out of exceptions and you've guessed too high! The secret was " + mySecret);
+		  }
+
+		  else if (l > e && c<=0 && l<max)
+		  {
+		  	System.out.println("Your guess was lower than allowed. You have " + 0 + " exceptions remaining.");
+		  	System.out.println("You're out of exceptions and you've guessed too high! The secret was " + mySecret);
+		  }
+		
+		     } return true;
+	  } else 
+	   {
+		  f = f + 1;
+		    if (l==e){
+		    	System.out.println("You won!");
+		    }
+		    	
+		    else if(l>max && c>=0 && l!=e)
+		  {
+		  	max=l;
+		  	
+		  System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		 
+		     }
+		    
+		   else if(l>max && c<0 && l<e)
+			  {
+			  	max=l;
+			  	
+			  System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+			 
+			     }
+
+		  else if (l < max && c>=0 && l!=e) {
+		  System.out.println("Your guess was lower than allowed. You have " + c + " exceptions remaining.");
+		  System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		  c = c-1;
+		  }
+		  else if (l < max && c<=0 && l<e) {
+		  System.out.println("Your guess was lower than allowed. You have " + 0 + " exceptions remaining.");
+		  System.out.println("Guess: " + input + "; " + "Result: " + x + "," + y);
+		  }
+
+		  else if (l > e && c<=0 && l>max)
+		  {
+		  	System.out.println("You're out of exceptions and you've guessed too high! The secret was " + mySecret);
+		  }
+
+		  else if (l > e && c<=0 && l<max)
+		  {
+		  	System.out.println("Your guess was lower than allowed. You have " + 0 + " exceptions remaining.");
+		  	System.out.println("You're out of exceptions and you've guessed too high! The secret was " + mySecret);
+		  }
+		 
+		     } return true;
+	  }
+	    
+	  return false;
+	  
+  }
+}
 
